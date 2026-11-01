@@ -2,7 +2,7 @@
 
 **A collection of Windows-based tools for ESP32 firmware development, flashing, and device management.**
 
-ESP32 Toolbox brings together several utilities designed to make working with ESP32 devices easier. It includes graphical and command-line applications, bundled Espressif utilities, and build scripts for producing standalone Windows executables.
+ESP32 Toolbox brings together several utilities designed to make working with ESP32 devices easier. It includes graphical applications, bundled Espressif utilities, and build scripts for producing standalone Windows executables.
 
 The goal is to provide convenient access to common ESP32 development operations without having to manually work with individual command-line tools every time.
 
