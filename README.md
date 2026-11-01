@@ -23,7 +23,7 @@ ESP32-Flasher provides both graphical and console interfaces for flashing firmwa
 - Avoid manually constructing esptool command-line arguments.
 
 **Console version**
-- Provides a command-line alternative to the graphical application.
+- Provides a console with the GUI based application for debugging.
 - Useful for terminal-based workflows and scripting.
 
 **Included files:**
@@ -58,7 +58,7 @@ This allows users to select between different tool versions when compatibility w
 
 **Available interfaces:**
 - Graphical application (`ESP-Tools-Studio-GUI.exe`)
-- Console application (`ESP-Tools-Studio-Console.exe`)
+- Graphical application (With console for debugging.) (`ESP-Tools-Studio-Console.exe`)
 
 The corresponding Python source files are included as well.
 
@@ -75,9 +75,9 @@ The directory contains separate build scripts for each application and interface
 | Application | Interface |
 |---|---|
 | ESP32-Flasher | GUI |
-| ESP32-Flasher | Console |
+| ESP32-Flasher | GUI (With console) |
 | ESP-Tools-Studio | GUI |
-| ESP-Tools-Studio | Console |
+| ESP-Tools-Studio | GUI (With console) |
 
 Each target has its own `.bat` and `.cmd` build script.
 
