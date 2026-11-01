@@ -14,7 +14,7 @@ The goal is to provide convenient access to common ESP32 development operations 
 
 A lightweight firmware flashing application for ESP32 devices.
 
-ESP32-Flasher provides both graphical and console interfaces for flashing firmware to ESP32 microcontrollers.
+ESP32-Flasher provides graphical interface for flashing firmware to ESP32 microcontrollers.
 
 **GUI version**
 - Select a firmware `.bin` file.
