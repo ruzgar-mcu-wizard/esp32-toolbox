@@ -37,7 +37,7 @@ ESP32-Flasher provides both graphical and console interfaces for flashing firmwa
 
 ### 2. ESP-Tools-Studio
 
-A graphical and command-line frontend for Espressif's ESP32 development utilities.
+A graphical frontend for Espressif's ESP32 development utilities.
 
 Instead of manually remembering commands and arguments, ESP-Tools-Studio provides an application interface for working with three major Espressif tools:
 
