@@ -137,4 +137,4 @@ git lfs pull
 
 ## Project
 
-**ESP32 Toolbox — a practical set of tools for getting ESP32 work done.** ⚡
+**ESP32 Toolbox - a practical set of tools for getting ESP32 work done.** ⚡
