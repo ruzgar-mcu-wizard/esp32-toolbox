@@ -1,171 +1,140 @@
 # ESP32 Toolbox
 
-**A collection of Windows-based tools for ESP32 firmware development, flashing, and device management.**
+A collection of Windows utilities for ESP32 development, firmware flashing and working with Espressif's command-line tools.
 
-ESP32 Toolbox brings together several utilities designed to make working with ESP32 devices easier. It includes graphical applications, bundled Espressif utilities, and build scripts for producing standalone Windows executables.
+ESP32 Toolbox packages graphical and console applications together with their Python source, bundled utilities and build scripts. The goal is to make common ESP32 workflows easier to access without having to assemble every command manually.
 
-The goal is to provide convenient access to common ESP32 development operations without having to manually work with individual command-line tools every time.
+## What's included
 
----
+| Component | What it does |
+| --- | --- |
+| **ESP32-Flasher** | Flash firmware images to ESP32 devices through a graphical or console application. |
+| **ESP-Tools-Studio** | Provides a frontend for `esptool`, `espefuse` and `espsecure`. |
+| **EXE Builder** | Contains the source and scripts used to build the included Windows executables. |
 
-## Projects
+## ESP32-Flasher
 
-### 1. ESP32-Flasher
+ESP32-Flasher provides a Windows interface for flashing firmware to an ESP32 over a serial connection.
 
-A lightweight firmware flashing application for ESP32 devices.
+The GUI workflow lets you select a firmware `.bin` file, choose the serial COM port and start the flashing operation without manually assembling an `esptool` command.
 
-ESP32-Flasher provides graphical interface for flashing firmware to ESP32 microcontrollers.
+Included distribution files:
 
-**GUI version**
-- Select a firmware `.bin` file.
-- Select the serial COM port connected to the ESP32.
-- Start the flashing process through a graphical interface.
-- Avoid manually constructing esptool command-line arguments.
-
-**Console version**
-- Provides a console with the GUI based application for debugging.
-- Useful for terminal-based workflows and scripting.
-
-**Included files:**
 - `ESP32-Flasher-GUI.exe`
 - `ESP32-Flasher-Console.exe`
 - Python source files for both interfaces.
 - Bundled `esptool.exe`.
-- A ZIP archive containing the project distribution.
+- ZIP distribution archive.
 
----
+Use the console build when you want terminal output for troubleshooting or scripting.
 
-### 2. ESP-Tools-Studio
+## ESP-Tools-Studio
 
-A graphical frontend for Espressif's ESP32 development utilities.
+ESP-Tools-Studio provides a graphical frontend for three Espressif utilities:
 
-Instead of manually remembering commands and arguments, ESP-Tools-Studio provides an application interface for working with three major Espressif tools:
+| Utility | Main use |
+| --- | --- |
+| `esptool` | Detecting ESP devices and performing firmware and flash operations. |
+| `espefuse` | Reading and programming ESP32 eFuses. |
+| `espsecure` | Working with ESP firmware security and cryptographic operations. |
 
-| Utility | Purpose |
-|---|---|
-| **esptool** | Firmware flashing, chip detection, flash operations, and related ESP device operations. |
-| **espefuse** | Reading and programming ESP32 eFuses. |
-| **espsecure** | ESP firmware security and cryptographic operations. |
+Two bundled tool versions are included:
 
-**Version support**
+- **5.5.0**
+- **4.12.0**
 
-ESP-Tools-Studio includes two sets of bundled Espressif utilities:
+The project provides GUI and console-enabled application builds, plus their Python source files. The console-enabled build is useful when you need to inspect command output while debugging.
 
-- **Version 5.5.0**
-- **Version 4.12.0**
+## EXE Builder
 
-This allows users to select between different tool versions when compatibility with a particular workflow matters.
+The `exe-Builder/` directory contains the Python source and build scripts for the included applications.
 
-**Available interfaces:**
-- Graphical application (`ESP-Tools-Studio-GUI.exe`)
-- Graphical application (With console for debugging.) (`ESP-Tools-Studio-Console.exe`)
+Build targets are provided for:
 
-The corresponding Python source files are included as well.
-
----
-
-### 3. exe-Builder
-
-A collection of build scripts and source files used to compile the applications into Windows executables.
-
-The directory contains separate build scripts for each application and interface.
-
-**Available build targets:**
-
-| Application | Interface |
-|---|---|
+| Application | Build |
+| --- | --- |
 | ESP32-Flasher | GUI |
-| ESP32-Flasher | GUI (With console) |
+| ESP32-Flasher | Console-enabled |
 | ESP-Tools-Studio | GUI |
-| ESP-Tools-Studio | GUI (With console) |
+| ESP-Tools-Studio | Console-enabled |
 
-Each target has its own `.bat` and `.cmd` build script.
+The scripts are available in both `.bat` and `.cmd` formats.
 
-The directory also contains the Python source files and bundled Espressif utilities required by the build process.
+Run the build script for the application variant you want to recreate. The source and required bundled tool files are kept alongside the build scripts.
 
-This makes it possible to rebuild individual applications without having to manually assemble their build commands.
+## Running the applications
 
----
+### Prebuilt applications
 
-## Repository Structure
+1. Download or clone this repository.
+2. Extract the distribution archive if you are using a ZIP package.
+3. Connect your ESP32 using a USB data cable.
+4. Make sure Windows has a suitable USB-to-UART driver for the board.
+5. Start the relevant executable.
+6. Select the correct COM port and operation.
+
+The prebuilt Windows executables are provided so you do not need to set up Python just to run the packaged applications.
+
+### Building from source
+
+The source files and individual build scripts are included in `exe-Builder/`. A Python environment and the dependencies required by the corresponding source files are needed to rebuild the applications.
+
+## Repository layout
+
+The repository is organized around three main directories:
 
 ```text
-ESP_Tool/
-│
+.
 ├── ESP32-Flasher/
 │   ├── ESP32-Flasher-GUI.exe
 │   ├── ESP32-Flasher-Console.exe
-│   ├── ESP32-Flasher-GUI.pyw
-│   ├── ESP32-Flasher-Console.py
+│   ├── Python source files
 │   ├── esptool.exe
-│   └── ESP32-Flasher.zip
-│
+│   └── ZIP distribution
 ├── ESP-Tools-Studio/
 │   ├── ESP-Tools-Studio-GUI.exe
 │   ├── ESP-Tools-Studio-Console.exe
-│   ├── ESP-Tools-Studio-GUI.pyw
-│   ├── ESP-Tools-Studio-Console.py
+│   ├── Python source files
 │   ├── esptool.exe
 │   ├── espefuse.exe
 │   ├── espsecure.exe
-│   ├── esptool_4.12.exe
-│   ├── espefuse_4.12.exe
-│   ├── espsecure_4.12.exe
-│   └── ESP-Tools-Studio.zip
-│
+│   ├── version 4.12 utility executables
+│   └── ZIP distribution
 └── exe-Builder/
-    ├── build_flasher_gui.cmd
-    ├── build_flasher_console.cmd
-    ├── build_studio_gui.cmd
-    ├── build_studio_console.cmd
+    ├── build scripts
     ├── Python source files
-    ├── Bundled Espressif utilities
-    └── exe-Builder.zip
+    ├── bundled utilities
+    └── ZIP distribution
 ```
 
-*The tree above illustrates the current distribution layout; individual files may change between releases.*
-
----
+The exact contents may change as the tools are updated.
 
 ## Requirements
 
-- Windows operating system.
-- Appropriate USB-to-serial drivers for your ESP32 development board.
+- Windows.
+- An ESP32-compatible device.
 - A working USB data cable.
-- Available serial COM port.
-- Python and required build dependencies if building from source.
+- A serial COM port.
+- A suitable USB-to-UART driver for your development board.
 
-Prebuilt executables are included, so Python is not necessarily required to run the distributed applications.
-
----
-
-## Building from Source
-
-The `exe-Builder` directory contains individual scripts for building each application.
-
-Build scripts are provided in both `.bat` and `.cmd` formats.
-
-Run the corresponding script for the application and interface you want to build.
-
----
+Python and build dependencies are required only when running or modifying the source directly or rebuilding the executables. They are not normally required for the prebuilt application packages.
 
 ## Git LFS
 
-Large binary files, including `.exe` and `.zip` distributions, are tracked using Git Large File Storage (Git LFS).
+Large binary distributions, including executable and ZIP files, are tracked with Git Large File Storage (Git LFS). If a clone contains pointer files instead of the actual binaries, install Git LFS and pull the LFS objects:
 
-Source code and build scripts remain ordinary Git-tracked files.
+```bash
+git lfs install
+git lfs pull
+```
 
----
+## Notes
 
-## Project Goals
+- Select the correct COM port before starting a flash operation.
+- Use a firmware image intended for your exact chip and board.
+- eFuse operations can permanently change device configuration. Read the relevant Espressif documentation and verify every setting before applying changes.
+- The bundled Espressif utilities are third-party software. Their authorship and licensing remain with Espressif.
 
-- Provide convenient ESP32 firmware flashing.
-- Make Espressif command-line utilities easier to work with.
-- Offer both graphical and console interfaces.
-- Include multiple Espressif tool versions.
-- Keep build scripts accessible and reproducible.
-- Distribute ready-to-use Windows executables alongside their source files.
+## Project
 
----
-
-**ESP32 Toolbox — Tools for working with ESP32, without the unnecessary hassle.**
+**ESP32 Toolbox — a practical set of tools for getting ESP32 work done.** ⚡
